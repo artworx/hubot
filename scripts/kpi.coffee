@@ -1,3 +1,20 @@
+# Description:
+#   KPI
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   kpi <user name> - list the last 10 quotes for a user
+#   kpi++ <user name> - kpi++ for last user comment
+#   kpi-- <user name> - kpi-- for last user comment
+#
+# Author:
+#   Akeszeg
+#
 class Message
   constructor: (@user, @text, @thumbs) ->
     @createdAt = new Date()
@@ -64,8 +81,6 @@ module.exports = (robot) ->
          KPI #{user}: #{kpi}\n
          > #{QuoteService.formatMessage(message)}
       "
-    else
-      res.send "Sorry, can't do that #{res.message.user.name}"
 
   robot.hear /kpi-- (.*)/i, (res) ->
     user = res.match[1]
