@@ -98,9 +98,15 @@ module.exports = (robot) ->
     user = res.match[1]
 
     messages = QuoteService.get(robot, user)
-    res.send messages.map (msg) ->
+    kpi = KpiService.get(robot, user)
+
+    messages = messages.map (msg) ->
       QuoteService.formatMessage(msg)
     .join("\n")
+    res.send "
+      KPI #{user} #{kpi}\n
+      #{messages}
+    "
 
   robot.hear /.*/, (res) ->
     context[res.message.user.name] = res.message
