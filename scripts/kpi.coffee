@@ -70,7 +70,7 @@ KpiService =
 module.exports = (robot) ->
   context = {}
 
-  robot.hear /kpi\+\+ (.*)/i, (res) ->
+  robot.hear /^kpi\+\+ (.*)/i, (res) ->
     user = res.match[1]
 
     if msg = context[user]
@@ -82,7 +82,7 @@ module.exports = (robot) ->
          > #{QuoteService.formatMessage(message)}
       "
 
-  robot.hear /kpi-- (.*)/i, (res) ->
+  robot.hear /^kpi-- (.*)/i, (res) ->
     user = res.match[1]
 
     if msg = context[user]
@@ -94,7 +94,7 @@ module.exports = (robot) ->
          > #{QuoteService.formatMessage(message)}
       "
 
-  robot.hear /kpi (.*)/i, (res) ->
+  robot.hear /^kpi (.*)/i, (res) ->
     user = res.match[1]
 
     messages = QuoteService.get(robot, user)
