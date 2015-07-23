@@ -74,25 +74,31 @@ module.exports = (robot) ->
     user = res.match[1]
 
     if msg = context[user]
-      message = QuoteService.addUp(robot, msg.user.name, msg.text)
-      kpi = KpiService.increment(robot, msg.user.name)
+      if user == res.message.user.name
+        res.send "NO!"
+      else
+        message = QuoteService.addUp(robot, msg.user.name, msg.text)
+        kpi = KpiService.increment(robot, msg.user.name)
 
-      res.send "
-         KPI #{user}: #{kpi}\n
-         > #{QuoteService.formatMessage(message)}
-      "
+        res.send "
+           KPI #{user}: #{kpi}\n
+           > #{QuoteService.formatMessage(message)}
+        "
 
   robot.hear /^kpi-- (.*)/i, (res) ->
     user = res.match[1]
 
     if msg = context[user]
-      message = QuoteService.addDown(robot, msg.user.name, msg.text)
-      kpi = KpiService.decrement(robot, msg.user.name)
+      if user == res.message.user.name
+        res.send "NO!"
+      else
+        message = QuoteService.addDown(robot, msg.user.name, msg.text)
+        kpi = KpiService.decrement(robot, msg.user.name)
 
-      res.send "
-         KPI #{user}: #{kpi}\n
-         > #{QuoteService.formatMessage(message)}
-      "
+        res.send "
+           KPI #{user}: #{kpi}\n
+           > #{QuoteService.formatMessage(message)}
+        "
 
   robot.hear /^kpi (.*)/i, (res) ->
     user = res.match[1]
