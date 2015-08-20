@@ -8,10 +8,9 @@
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
-  "hubot-shipit",
-  "hubot-fliptable",
-  "hubot-reaction",
-  "hubot-outofcontext",
-  "hubot-soon",
-  "hubot-gitlab-hooks"
+  "hubot-shipit", 
+  "hubot-fliptable", 
+  "hubot-reaction", 
+  "hubot-outofcontext", 
+  "hubot-soon"
 ]
