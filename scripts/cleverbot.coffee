@@ -19,6 +19,7 @@ cleverbot = require('cleverbot-node')
 module.exports = (robot) ->
   c = new cleverbot()
 
-  robot.hear /c?bordei(bot)? (.*)/i, (msg) ->
-    data = msg.match[2].trim()
+  robot.hear /c?bordei (.*)/i, (msg) ->
+    data = msg.match[1].trim()
     cleverbot.prepare(( -> c.write(data, (c) => msg.send(c.message))))
+
