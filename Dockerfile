@@ -1,5 +1,5 @@
 FROM node:0.10-onbuild
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD bin/hubot -a slack
