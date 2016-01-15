@@ -69,11 +69,15 @@ KpiService =
 
 module.exports = (robot) ->
   context = {}
+  banned_users = process.env.KPI_BANNED_USERS?.split(";")
 
   robot.hear /^kpi\+\+ (.*)/i, (res) ->
     user = res.match[1]
 
     if msg = context[user]
+      if res.message.user.name in banned_users
+        return res.send("DENIED!")
+
       if user == res.message.user.name
         res.send "NO!"
       else
@@ -89,6 +93,9 @@ module.exports = (robot) ->
     user = res.match[1]
 
     if msg = context[user]
+      if res.message.user.name in banned_users
+        return res.send("DENIED!")
+
       if user == res.message.user.name
         res.send "NO!"
       else
