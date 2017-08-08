@@ -1,5 +1,5 @@
 build:
-	docker build -t hubot .
+	docker build -t artworx/hubot .
 
 push:
-	docker push tutum.co/akeszeg/hubot
+	docker push artworx/hubot
